@@ -138,7 +138,7 @@ namespace Rebus.Tests.Contracts.ContainerAdapters
                 throw new NotImplementedException();
             }
 
-            public void Subscribe<TEvent>()
+            public IBus Subscribe<TEvent>()
             {
                 throw new NotImplementedException();
             }

@@ -254,19 +254,21 @@ namespace Rebus.Bus
         /// Sends a subscription request for <typeparamref name="TEvent"/> to the destination as
         /// specified by the currently used implementation of <see cref="IDetermineMessageOwnership"/>.
         /// </summary>
-        public void Subscribe<TEvent>()
+        public IBus Subscribe<TEvent>()
         {
             var multicastTransport = sendMessages as IMulticastTransport;
 
             if (multicastTransport != null && multicastTransport.ManagesSubscriptions)
             {
                 multicastTransport.Subscribe(typeof(TEvent), receiveMessages.InputQueueAddress);
-                return;
+                return this;
             }
 
             var publisherInputQueue = GetMessageOwnerEndpointFor(typeof(TEvent));
 
             InternalSubscribe<TEvent>(publisherInputQueue);
+
+            return this;
         }
 
         /// <summary>

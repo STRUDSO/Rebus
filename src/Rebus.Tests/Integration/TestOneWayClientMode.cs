@@ -44,7 +44,7 @@ namespace Rebus.Tests.Integration
                 .Start();
 
             // act
-            var exception = Assert.Throws<InvalidOperationException>(bus.Subscribe<string>);
+            var exception = Assert.Throws<InvalidOperationException>(() => bus.Subscribe<string>());
 
             // assert
             exception.Message.ShouldContain("one-way client mode");

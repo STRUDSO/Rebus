@@ -47,9 +47,10 @@ namespace Rebus.Testing
         /// <summary>
         /// Stores the event type in the list of implicitly routed subscribed types: <see cref="Subscriptions"/>
         /// </summary>
-        public void Subscribe<TEvent>()
+        public IBus Subscribe<TEvent>()
         {
             subscriptions.Add(typeof(TEvent));
+            return this;
         }
 
         /// <summary>

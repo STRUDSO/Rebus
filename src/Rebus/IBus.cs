@@ -32,7 +32,7 @@ namespace Rebus
         /// Sends a subscription request for <typeparamref name="TEvent"/> to the destination as
         /// specified by the currently used implementation of <see cref="IDetermineMessageOwnership"/>.
         /// </summary>
-        void Subscribe<TEvent>();
+        IBus Subscribe<TEvent>();
 
         /// <summary>
         /// Sends an unsubscription request for <typeparamref name="TEvent"/> to the destination as
